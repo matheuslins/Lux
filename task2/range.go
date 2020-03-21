@@ -25,3 +25,11 @@ func _floatRange(start *float64, stop float64) [] float64{
 	return listOfRange
 }
 
+func PickElements(hashMap map[float64]bool, iterator []float64, conditional bool) (arr []float64){
+	for _, item := range iterator {
+		if _, ok := hashMap[item]; ok == conditional {
+			arr = append(arr, item)
+		}
+	}
+	return
+}

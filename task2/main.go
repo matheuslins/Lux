@@ -5,26 +5,15 @@ import (
 )
 
 
-func Difference(containsArray, fullArray []float64) (diff []float64) {
+func difference(containsArray, fullArray []float64) []float64 {
 	hashMap := BuildHashMap(containsArray)
-
-	for _, item := range fullArray {
-		if _, ok := hashMap[item]; !ok {
-			diff = append(diff, item)
-		}
-	}
-	return
+	diff := PickElements(hashMap, fullArray, false)
+	return diff
 }
 
-func Intersect(firstInterval, secondInterval []float64) (equals []float64) {
+func intersect(firstInterval, secondInterval []float64) []float64 {
 	hashMap := BuildHashMap(secondInterval)
-
-	for _, item := range firstInterval {
-		if _, ok := hashMap[item]; ok {
-			equals = append(equals, item)
-		}
-	}
-
+	equals := PickElements(hashMap, firstInterval, true)
 	return equals
 }
 
@@ -33,12 +22,12 @@ func main()  {
 	firstInterval := UntangleList([]float64{4.0, 8.2})
 	secondInterval := UntangleList([]float64{6.1, 10.3})
 
-	sameValues := Intersect(firstInterval, secondInterval)
+	sameValues := intersect(firstInterval, secondInterval)
 	fmt.Println(sameValues)
 
 	mergedIntervals := append(firstInterval, secondInterval...)
 
-	differentValues := Difference(sameValues, mergedIntervals)
+	differentValues := difference(sameValues, mergedIntervals)
 	fmt.Println(differentValues)
 
 
