@@ -19,15 +19,16 @@ func intersect(firstInterval, secondInterval []float64) []float64 {
 
 func main()  {
 
-	firstInterval := UntangleList([]float64{4.0, 8.2})
-	secondInterval := UntangleList([]float64{6.1, 10.3})
+	firstInterval := UntangleList([]float64{4.0, 8.2}) // O(n)
+	secondInterval := UntangleList([]float64{6.1, 10.3}) // O(n)
 
-	sameValues := intersect(firstInterval, secondInterval)
+	sameValues := intersect(firstInterval, secondInterval) // O(n)
+	fmt.Println("The same values are:")
 	fmt.Println(sameValues)
 
 	mergedIntervals := append(firstInterval, secondInterval...)
-
-	differentValues := difference(sameValues, mergedIntervals)
+	differentValues := difference(sameValues, mergedIntervals) // O(n)
+	fmt.Println("The different values are:")
 	fmt.Println(differentValues)
 
 
