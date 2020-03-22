@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 
 func difference(containsArray, fullArray []float64) []float64 {

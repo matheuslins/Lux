@@ -31,10 +31,11 @@ func BuildHashMap(arr []float64) map[float64]bool {
 ```
 ## Run
 
+Put the project inside your $GOPATH, and run: 
 ```go
 
 cd [task1/task2]
-go run *.go
+go build main.go
 
 ```
 
