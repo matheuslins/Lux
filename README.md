@@ -45,7 +45,7 @@ go run *.go
 ### Task 2
 
 ```
-If the input are [4.0, 8.2] and [6.1, 10.3]
+If the inputs are [4.0, 8.2] and [6.1, 10.3]
 
 ###
 
