@@ -4,30 +4,30 @@ import "fmt"
 
 
 func compareIntervals(intervals [][]float64) [][]float64{
-	intervalsSize := len(intervals)
+	intervalsSize := &intervals
 	var mergedIntervals [][]float64
 
-	for i := 0; i < len(intervals); i++ {
-		if intervalsSize < 2 {
-			mergedIntervals = append(mergedIntervals, intervals[i])
+	for len(*intervalsSize) > 0 {
+		if len(*intervalsSize) < 2 {
+			mergedIntervals = append(mergedIntervals, intervals[0])
 			return mergedIntervals
 
 		}
-		nextElement := i + 1
-		firstInterval := UntangleList(intervals[i])
-		secondInterval := UntangleList(intervals[nextElement])
+		firstInterval := UntangleList(intervals[0])
+		secondInterval := UntangleList(intervals[1])
 		sameValues := Intersect(firstInterval, secondInterval)
 
 		if sameValues {
 			fullIntervals := append(firstInterval, secondInterval...)
 			extremitiesOfIntervals := GetExtremitiesOfIntervals(fullIntervals)
 			mergedIntervals = append(mergedIntervals, extremitiesOfIntervals)
-			intervals = RemoveInOrder(intervals, nextElement)
+			intervals = RemoveInOrder(intervals, 0)
+			intervals = RemoveInOrder(intervals, 0)
 		}
 
 		if !sameValues {
-			mergedIntervals = append(mergedIntervals, intervals[i])
-			intervals = RemoveInOrder(intervals, nextElement)
+			mergedIntervals = append(mergedIntervals, intervals[0])
+			intervals = RemoveInOrder(intervals, 0)
 		}
 	}
 
