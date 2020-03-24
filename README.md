@@ -41,7 +41,7 @@ Put the project inside your $GOPATH, and run:
 ```go
 
 cd [task1/task2]
-go build main.go
+go run main.go
 
 ```
 
@@ -52,12 +52,12 @@ go build main.go
 ### Task 2
 
 ```
-If the inputs is [[1.0, 3.5], [4.0, 8.2], [3.5, 3.8], [6.1, 10.3], [0.1, 0.4]]
+If the input is: [[1.0, 3.5], [4.0, 8.2], [3.5, 3.8], [6.1, 10.3], [0.1, 0.4]]
 
 ###
 
 The output is:
-[[1.0, 3.8], [0.1, 0.4], [4.0, 10.3]]
+[[0.1, 0.4], [1.0, 3.8], [4.0, 10.3]]
 
 ```
 
