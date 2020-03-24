@@ -12,21 +12,27 @@
  ### Task 2
  
 ```bash
-Linear time: O(n)
+Linear time: O(n^2)
 ```
-Means that as the input grows the algorithms take proportionally longer to complete.
-In this case, it was used a HashMap to make the intersect and difference functions:
+Means that as the input grows the algorithms take n^2 time longer to complete.
+In this case, I needed to read a list of list:
 
  ```go
 
-func BuildHashMap(arr []float64) map[float64]bool {
-	hMap := make(map[float64]bool)
+func compareIntervals(intervals [][]float64) [][]float64{
+    ...
+	for i := 0; i < len(intervals); i++ {
+		...
+		firstInterval := UntangleList(intervals[i])
+...
 
-	for _, item := range arr {
-		hMap[item] = true
+UntangleList > _floatRange
+
+func _floatRange(start *float64, stop float64) [] float64{
+	...
+	for math.Round(startValue * size) <= math.Round(stop * size) {
+		...
 	}
-	return hMap
-}
 
 ```
 ## Run
@@ -46,15 +52,13 @@ go build main.go
 ### Task 2
 
 ```
-If the inputs are [4.0, 8.2] and [6.1, 10.3]
+If the inputs is [[1.0, 3.5], [4.0, 8.2], [3.5, 3.8], [6.1, 10.3], [0.1, 0.4]]
 
 ###
 
-The same values are:
-[6.1 6.2 6.3 6.4 6.5 6.6 6.7 6.8 6.9 7 7.1 7.2 7.3 7.4 7.5 7.6 7.7 7.8 7.9 8 8.1 8.2]
+The output is:
+[[1.0, 3.8], [0.1, 0.4], [4.0, 10.3]]
 
-The different values are:
-[4 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5 5.1 5.2 5.3 5.4 5.5 5.6 5.7 5.8 5.9 6 8.3 8.4 8.5 8.6 8.7 8.8 8.9 9 9.1 9.2 9.3 9.4 9.5 9.6 9.7 9.8 9.9 10 10.1 10.2 10.3]
 ```
 
 

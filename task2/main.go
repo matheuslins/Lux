@@ -3,31 +3,43 @@ package main
 import "fmt"
 
 
-func difference(containsArray, fullArray []float64) []float64 {
-	hashMap := BuildHashMap(containsArray)
-	diff := PickElements(hashMap, fullArray, false)
-	return diff
-}
+func compareIntervals(intervals [][]float64) [][]float64{
+	intervalsSize := len(intervals)
+	var mergedIntervals [][]float64
 
-func intersect(firstInterval, secondInterval []float64) []float64 {
-	hashMap := BuildHashMap(secondInterval)
-	equals := PickElements(hashMap, firstInterval, true)
-	return equals
+	for i := 0; i < len(intervals); i++ {
+		if intervalsSize < 2 {
+			mergedIntervals = append(mergedIntervals, intervals[i])
+			return mergedIntervals
+
+		}
+		nextElement := i + 1
+		firstInterval := UntangleList(intervals[i])
+		secondInterval := UntangleList(intervals[nextElement])
+		sameValues := Intersect(firstInterval, secondInterval)
+
+		if sameValues {
+			fullIntervals := append(firstInterval, secondInterval...)
+			extremitiesOfIntervals := GetExtremitiesOfIntervals(fullIntervals)
+			mergedIntervals = append(mergedIntervals, extremitiesOfIntervals)
+			intervals = RemoveInOrder(intervals, nextElement)
+		}
+
+		if !sameValues {
+			mergedIntervals = append(mergedIntervals, intervals[i])
+			intervals = RemoveInOrder(intervals, nextElement)
+		}
+	}
+
+	return mergedIntervals
 }
 
 func main()  {
 
-	firstInterval := UntangleList([]float64{4.0, 8.2}) // O(n)
-	secondInterval := UntangleList([]float64{6.1, 10.3}) // O(n)
+	intervals := [][]float64{{1.0, 3.5}, {4.0, 8.2}, {3.5, 3.8}, {6.1, 10.3}, {0.1, 0.4}}
+	OrderList(intervals) // O(n^2)
 
-	sameValues := intersect(firstInterval, secondInterval) // O(n)
-	fmt.Println("The same values are:")
-	fmt.Println(sameValues)
-
-	mergedIntervals := append(firstInterval, secondInterval...)
-	differentValues := difference(sameValues, mergedIntervals) // O(n)
-	fmt.Println("The different values are:")
-	fmt.Println(differentValues)
-
+	mergedIntervals := compareIntervals(intervals) // O(n^2)
+	fmt.Println(mergedIntervals)
 
 }
