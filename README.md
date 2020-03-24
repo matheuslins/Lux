@@ -21,9 +21,9 @@ In this case, I needed to read a list of list:
 
 func compareIntervals(intervals [][]float64) [][]float64{
     ...
-	for i := 0; i < len(intervals); i++ {
+	for len(*intervalsSize) > 0 {
 		...
-		firstInterval := UntangleList(intervals[i])
+		firstInterval := UntangleList(intervals[0])
 ...
 
 UntangleList > _floatRange
