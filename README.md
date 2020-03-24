@@ -12,7 +12,7 @@
  ### Task 2
  
 ```bash
-Linear time: O(n^2)
+Quadratic time: O(n^2)
 ```
 Means that as the input grows the algorithms take n^2 time longer to complete.
 In this case, I needed to read a list of list:
