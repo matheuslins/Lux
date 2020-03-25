@@ -80,6 +80,17 @@ The output is:
 
 abc: true
 
+-------
+
+If the input is: ["ab", "bc" ] => "abc"
+
+###
+
+The output is:
+
+abc: false
+
+
 ```
 
 ### Task 2
