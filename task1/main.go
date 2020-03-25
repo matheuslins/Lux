@@ -38,7 +38,7 @@ func checkConcatenation(tokens []string, input string) bool {
 
 
 func main() {
-	permutations := getPermutations([]string{  "ab", "bc", "c" })
+	permutations := getPermutations([]string{"ab", "bc", "c"})
 
 	for _, input := range []string{"abc", "ab", "c", "", "acba"} {
 		fmt.Printf("%s: %v\n", input, checkConcatenation(permutations, input))

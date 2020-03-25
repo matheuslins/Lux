@@ -8,7 +8,29 @@
 
  ### Task 1
  
- 
+ ```bash
+ Linear time: O(n)
+ ```
+
+In this case, it was iterated by preprocessed input list and checked one by one if
+the current token contains the input.
+
+```go
+
+func checkConcatenation(tokens []string, input string) bool {
+
+	if input == "" {
+		return true
+	}
+	for _, element := range tokens {
+		if strings.Contains(element, input){
+			return true
+		}
+	}
+	return false
+}
+
+```
  ### Task 2
  
 ```bash
@@ -48,6 +70,17 @@ go run main.go
 ## Outputs
 
 ### Task 1
+
+```
+If the input is: ["ab", "bc", "c"] => "abc"
+
+###
+
+The output is:
+
+abc: true
+
+```
 
 ### Task 2
 
